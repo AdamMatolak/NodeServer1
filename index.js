@@ -20,13 +20,20 @@ app.get('/author', (req, res)=>{
 })
 
 app.get('/task', (req, res)=>{
-    MongoClient.connect(connectionURL,{useNewUrlParser: true}, (error, client)=>{
+    MongoClient.connect(connectionURL, (error, client)=>{
         if(error){
             return console.log('Unable to connect to database UwU');
         }
+        console.log('Connected UwU');
+        let filter='';
+        if(req.query.done){
+            filter={done:true};
+        }else{
+            filter={done:false};
+        }
         const db=client.db(databaseName);
 
-        db.collection('Tasks').find().toArray((err, result)=>{
+        db.collection('Tasks').find(filter).toArray((err, result)=>{
             if(err) throw err;
             console.log(result);
             res.send(result);
