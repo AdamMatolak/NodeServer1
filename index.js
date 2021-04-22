@@ -23,23 +23,32 @@ app.get('/task', (req, res)=>{
     MongoClient.connect(connectionURL, (error, client)=>{
         if(error){
             return console.log('Unable to connect to database UwU');
-        }
-        console.log('Connected UwU');
-        let filter='';
-        if(req.query.done){
-            filter={done:true};
         }else{
-            filter={done:false};
-        }
-        const db=client.db(databaseName);
+            let filter='';
+            if(req.query.done){
+                if(req.query.done=='true'){
+                    filter={done:true};
+                }else{
+                    filter={done:false};
+                }
+            }else if(req.query.priority){
+                filter.priority=parseInt(req.query.priority);
+            }
+            console.log(filter);
+            const db=client.db(databaseName);
 
-        db.collection('Tasks').find(filter).toArray((err, result)=>{
-            if(err) throw err;
-            console.log(result);
-            res.send(result);
+            db.collection('Tasks').find(filter).toArray((err, result)=>{
+                if(err) throw err;
+                console.log(result);
+                res.send(result);
         })
+        }
+        
     })
 })
+
+//spraviť insertNewTask UwU
+
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
 })
