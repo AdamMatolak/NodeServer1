@@ -7,6 +7,14 @@ const databaseName = 'TaskDB';
 const app = express();
 const MongoClient = mongodb.MongoClient;
 
+app.use(
+    express.urlencoded({
+        extended: true
+    })
+);
+
+app.use(express.json());
+
 app.get('', (req, res)=>{
     res.send('Hello I am your NodeJS server');
 })
@@ -47,8 +55,22 @@ app.get('/task', (req, res)=>{
     })
 })
 
-//spraviť insertNewTask UwU
+app.post('/task/new', (req, res)=>{
+    const data = (req.body);
+    const name = data.name;
+    const priority = data.priority;
+    const date = currentDate;
+    let currentDate = new Date();
+    let price='undefined';
+    if(data.price){
+        price = data.price;
+    }
+    console.log(name,' ',priority,' ',price,' ',date);
+
+    
+})
+
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
-})
+}) 
