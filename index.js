@@ -76,6 +76,12 @@ app.post('/task/new', (req, res)=>{
         })
     })
 })
+
+app.get('/task/find/{priority}', (req, res)=>{
+    MongoClient.connect(connectionURL, (error, client)=>{
+        
+    })
+})
     
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
