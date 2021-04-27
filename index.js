@@ -77,12 +77,12 @@ app.post('/task/new', (req, res)=>{
     })
 })
 
-app.get('/task/find', (req, res)=>{
-    const db=client.db(databaseName);
-    MongoClient.connect(connectionURL, (error, client)=>{
-        db.collection("Tasks").findOne({'priority.value': req.params('priority')})
-    })
-})
+// app.get('/task/find', (req, res)=>{
+//     const db=client.db(databaseName);
+//     MongoClient.connect(connectionURL, (error, client)=>{
+//         db.collection("Tasks").findOne({'priority.value': req.params('priority')})
+//     })
+// })
 
 app.put('/task/done', (req,res)=>{
     
