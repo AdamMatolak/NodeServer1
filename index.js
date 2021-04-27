@@ -47,7 +47,7 @@ app.get('/task', (req, res)=>{
 
             db.collection('Tasks').find(filter).toArray((err, result)=>{
                 if(err) throw err;
-                console.log(result);
+                //console.log(result);
                 res.send(result);
         })
         } 
@@ -77,9 +77,37 @@ app.post('/task/new', (req, res)=>{
     })
 })
 
-app.get('/task/find/{priority}', (req, res)=>{
+app.get('/task/find', (req, res)=>{
+    const db=client.db(databaseName);
     MongoClient.connect(connectionURL, (error, client)=>{
-        
+        db.collection("Tasks").findOne({'priority.value': req.params('priority')})
+    })
+})
+
+app.put('/task/done', (req,res)=>{
+    
+    const id = req.query._id;
+    if(!id){
+        res.status(400).send({"error":"missing _id parameter"});
+    }
+    const filter={}
+    var newValue = {$set:{done: true}};
+    filter._id = new mongodb.ObjectID(id);
+
+    MongoClient.connect(connectionURL, (error, client)=>{
+        if(error){
+            res.status(400).send({"error":"Unable to save data to database"});
+            return console.log("Unable to connect to database");
+        }
+        const db=client.db(databaseName);
+        db.collection("Tasks").updateOne(filter, newValue),(error,res)=>{
+            if(error){
+                res.status(400).send({"error":"Unable to update task"});
+            }else{
+                res.status(200).send({"result":"Task has been updated"});
+                console.log("1 document updated");
+            }
+        }
     })
 })
     
