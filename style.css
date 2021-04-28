@@ -1,0 +1,36 @@
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    flex-direction: column;
+    background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(144,144,144,1) 100%);
+}
+.container{
+    display: flex;
+    flex-direction: column;
+
+    padding: 30px;
+
+    margin: auto;
+    margin-top: 25%;
+
+    border-radius: 10%;
+    
+    background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(144,144,144,1) 100%);
+
+    /* box-shadow:5px 5px darkgray; */
+}
+
+
+input{
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+#submit{
+    margin-top: 20px;
+
+    background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(144,144,144,1) 100%);
+}
