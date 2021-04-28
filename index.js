@@ -105,7 +105,6 @@ app.put('/task/done', (req,res)=>{
                 res.status(400).send({"error":"Unable to update task"});
             }else{
                 res.status(200).send({"result":"Task has been updated"});
-                console.log("1 document updated");
             }
         }
     })
