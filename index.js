@@ -56,6 +56,7 @@ app.get('/task', (req, res)=>{
 })
 
 app.post('/task/new', (req, res)=>{
+    res.setHeader('Access-Control-Allow-Origin', '*');
     MongoClient.connect(connectionURL, (error, client)=>{
         const data = (req.body);
         const name = data.name;
@@ -86,7 +87,7 @@ app.post('/task/new', (req, res)=>{
 // })
 
 app.put('/task/done', (req,res)=>{
-    
+    res.setHeader('Access-Control-Allow-Origin', '*');
     const id = req.query._id;
     if(!id){
         res.status(400).send({"error":"missing _id parameter"});

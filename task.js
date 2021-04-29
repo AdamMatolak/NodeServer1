@@ -1,7 +1,6 @@
 //$(document).ready( () => {} );
 // skratene
 $(()=>{
-    console.log("Hello, your page is ready")
     $.ajax({
         url:"http://localhost:3000/task",
         type: "get",
@@ -16,14 +15,20 @@ $(()=>{
                     const date = result[index].date;
                     const done = result[index].done;
                     const price = result[index].price;
-                    let text = name + " (" + date + ") <br>";
+                    let text = "<b>" + name + "</b>" + " (" + date + ") <br>";
                     text = text +  "Priority: " + priority + " <br>";
                     if(price >= 0){
                         text = text + " Price: " + price + " <br>";
                     }
                     text = text + "Done: " + done;
                     
-                    console.log(text);
+                    //var newElement = $("<div></div>").text(text);
+                    //var elementBr = $("<br/>");
+
+                    $("#mainContainer").append("<div class='container3'>" +"<div class='container4'>" + text + "</div>" + "</div>");
+                    // if(done=="false"){
+                    //     $(".container3").append("<button id='donebtn'>" + "Done" + "</buton>");
+                    // }
                 }
             },
             400: (err) => {
@@ -33,6 +38,5 @@ $(()=>{
                 console.log('Not found');
             }
         }
-        
     })
 })
