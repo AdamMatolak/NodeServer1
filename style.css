@@ -1,9 +1,15 @@
+html{
+    margin: 0;
+    padding: 0;
+}
 body{
+    height: full;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     display: flex;
     flex-direction: column;
     background: rgb(255,255,255);
     background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(144,144,144,1) 100%);
+    
 }
 .container{
     display: flex;
@@ -12,25 +18,49 @@ body{
     padding: 30px;
 
     margin: auto;
-    margin-top: 25%;
+    margin-top: 200px;
+    margin-bottom: 0;
 
-    border-radius: 10%;
+    border-radius: 20px;
     
     background: rgb(255,255,255);
     background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(144,144,144,1) 100%);
 
     /* box-shadow:5px 5px darkgray; */
 }
-
-
 input{
     margin-top: 5px;
     margin-bottom: 20px;
 }
-
 #submit{
     margin-top: 20px;
 
+
     background: rgb(255,255,255);
     background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(144,144,144,1) 100%);
+}
+.container2{
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 0;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(144,144,144,1) 100%);
+}
+#tasksbtn{
+    
+    background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(144,144,144,1) 100%);
+}
+h1{
+    margin: auto;
+}
+
+.inputs{
+    width: 200px;
+    height: 27px;
 }

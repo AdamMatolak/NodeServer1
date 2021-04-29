@@ -28,6 +28,7 @@ app.get('/author', (req, res)=>{
 })
 
 app.get('/task', (req, res)=>{
+    res.setHeader('Access-Control-Allow-Origin', '*');
     MongoClient.connect(connectionURL, (error, client)=>{
         if(error){
             return console.log('Unable to connect to database UwU');
