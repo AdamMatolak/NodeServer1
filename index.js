@@ -1,3 +1,5 @@
+const cors = require('cors');
+
 const express = require('express');
 const mongodb = require('mongodb');
 
@@ -6,6 +8,13 @@ const databaseName = 'TaskDB';
 
 const app = express();
 const MongoClient = mongodb.MongoClient;
+
+app.use(
+    cors({
+        credentials: true, 
+        origin: true
+    })
+)
 
 app.use(
     express.urlencoded({
@@ -79,15 +88,8 @@ app.post('/task/new', (req, res)=>{
     })
 })
 
-// app.get('/task/find', (req, res)=>{
-//     const db=client.db(databaseName);
-//     MongoClient.connect(connectionURL, (error, client)=>{
-//         db.collection("Tasks").findOne({'priority.value': req.params('priority')})
-//     })
-// })
-
 app.put('/task/done', (req,res)=>{
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    
     const id = req.query._id;
     if(!id){
         res.status(400).send({"error":"missing _id parameter"});
@@ -105,9 +107,8 @@ app.put('/task/done', (req,res)=>{
         db.collection("Tasks").updateOne(filter, newValue),(error,res)=>{
             if(error){
                 res.status(400).send({"error":"Unable to update task"});
-            }else{
-                res.status(200).send({"result":"Task has been updated"});
             }
+            res.status(200).send({"result":"Task has been updated"});  
         }
     })
 })

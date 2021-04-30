@@ -80,6 +80,9 @@ h1{
 .container3{
     display: flex;
     flex-direction: row;
+
+    justify-content: space-between;
+
     background: rgb(255,255,255);
     background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(144,144,144,1) 100%);
 
@@ -88,7 +91,10 @@ h1{
     border-radius: 10px;
 }
 
-#donebtn{
+#cmpltbtn{
+
     background: rgb(255,255,255);
     background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(144,144,144,1) 100%);
+    
+    margin-left: 90px;
 }
